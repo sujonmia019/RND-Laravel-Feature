@@ -3,20 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TwoFactorController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use Illuminate\Support\Facades\Cache;
+use Log;
 
 Route::get('/', function () {
+    Log::info("message");
     return view('welcome');
+});
+
+Route::get('test-redis', function () {
+    Cache::put('test_key', 'Redis is working!', 10);
+    return Cache::get('test_key');
 });
 
 Route::get('2fa', [TwoFactorController::class, 'index'])->name('2fa.index');
