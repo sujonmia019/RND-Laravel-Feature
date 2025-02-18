@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('two_factor_code')->nullable();
-            $table->timestamp('two_factor_expires_at')->nullable();
+            $table->string('two_factor_code')->after('password')->nullable();
+            $table->timestamp('two_factor_expires_at')->after('two_factor_code')->nullable();
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('two_factor_code')->nullable();
-            $table->timestamp('two_factor_expires_at')->nullable();
+            $table->string('two_factor_code')->after('password')->nullable();
+            $table->timestamp('two_factor_expires_at')->after('two_factor_code')->nullable();
         });
     }
 };

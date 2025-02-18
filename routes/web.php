@@ -4,10 +4,17 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TwoFactorController;
-
+use Illuminate\Support\Facades\Cache;
+use Log;
 
 Route::get('/', function () {
+    Log::info("message");
     return view('welcome');
+});
+
+Route::get('test-redis', function () {
+    Cache::put('test_key', 'Redis is working!', 10);
+    return Cache::get('test_key');
 });
 
 Route::get('2fa', [TwoFactorController::class, 'index'])->name('2fa.index');
