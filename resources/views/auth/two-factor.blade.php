@@ -16,7 +16,7 @@
 
             <x-input-error :messages="$errors->get('two_factor_code')" class="mt-2" />
         </div>
-        <x-primary-button>
+        <x-primary-button>   
             {{ __('Verify') }}
         </x-primary-button>
     </form>

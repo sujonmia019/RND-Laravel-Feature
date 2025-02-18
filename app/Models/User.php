@@ -50,7 +50,7 @@ class User extends Authenticatable
     public function generateTwoFactorCode()
     {
         $this->two_factor_code = rand(100000, 999999);
-        $this->two_factor_expires_at = Carbon::now()->addMinutes(2);
+        $this->two_factor_expires_at = Carbon::now()->addMinutes(10);
         $this->save();
 
         $this->notify(new TwoFactorCode());

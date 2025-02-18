@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
             $request->session()->regenerate();
             User::find(Auth::id())->generateTwoFactorCode();
-            return redirect()->route('2fa.index');
+            return redirect()->route('2fa.index');  
         }
 
         return back()->withErrors([

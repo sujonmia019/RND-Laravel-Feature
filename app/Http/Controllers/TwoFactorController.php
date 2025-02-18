@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TwoFactorController extends Controller
+class TwoFactorController extends Controller  
 {
     public function index()
     {
